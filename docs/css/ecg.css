@@ -1,0 +1,116 @@
+/* 心電図アプリ固有の見た目（記録紙、モニター、心電図の図）。共通部分は medical-ui.css */
+.paperWrap { position: relative; width: max-content; }
+.paperWrap canvas { display: block; }
+#overlay, .paperWrap canvas.overlay { position: absolute; left: 0; top: 0; cursor: crosshair; }
+.readout {
+  position: absolute;
+  background: rgba(76, 120, 181, 0.92);
+  color: #fff;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.monitorWrap { display: flex; background: #0c1424; border-radius: 10px; overflow: hidden; }
+#monitor { flex: 1; height: 260px; min-width: 600px; }
+.monSide {
+  width: 150px;
+  padding: 12px;
+  color: #6dff9a;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-left: 1px solid #1d2a40;
+}
+.monLabel { font-size: 13px; opacity: 0.8; }
+.hr { font: 600 56px/1 ui-monospace, monospace; }
+.monSide button { background: #14223a; color: #6dff9a; border-color: #2a3d5c; }
+.gain { display: flex; align-items: center; gap: 6px; }
+.tools { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 13px; margin-top: 6px; }
+.partInfo { margin-top: 8px; min-height: 60px; }
+.partInfo p { margin: 4px 0; }
+/* 図（SVG） */
+svg.beat { width: 100%; max-width: 620px; background: #fff9f8; border: 1px solid #f6dcd6; border-radius: 8px; display: block; }
+svg.avb, svg.strip { max-width: none; width: 800px; }
+svg .g1 { stroke: #f7d9d3; stroke-width: 0.6; }
+svg .g5 { stroke: #efb9ae; stroke-width: 0.9; }
+svg .trace { fill: none; stroke: #2d3448; stroke-width: 1.8; stroke-linejoin: round; }
+svg .hl { fill: rgba(143, 181, 229, 0.28); }
+svg .cursor { stroke: var(--ng); stroke-width: 1.8; }
+svg .br { stroke: var(--accent-ink); stroke-width: 1.5; }
+svg .brt { fill: var(--accent-ink); font-size: 13px; text-anchor: middle; font-weight: 700; }
+svg.heart { width: 100%; max-width: 360px; }
+svg .chamber { fill: #fde6ee; stroke: #eeb1c4; stroke-width: 2; }
+svg .vessel { fill: #f3e7f8; stroke: #cdb8ea; stroke-width: 1.5; }
+svg .septum { stroke: #eeb1c4; stroke-width: 2; stroke-dasharray: 4 3; }
+svg .wire { fill: none; stroke: #e2b84a; stroke-width: 4; stroke-linecap: round; }
+svg .wire.thick { stroke-width: 6; }
+svg .fiber { fill: none; stroke: #e2b84a; stroke-width: 2; stroke-linecap: round; }
+svg .node { fill: #f3dc8c; stroke: #c99d2c; stroke-width: 1.5; }
+svg .part { cursor: pointer; }
+svg .part.on .chamber { fill: #dce9fb; stroke: var(--accent-strong); }
+svg .part.on .wire, svg .part.on .fiber { stroke: var(--accent-strong); }
+svg .part.on .node { fill: var(--accent); stroke: var(--accent-ink); }
+svg .lbl { font-size: 12px; fill: var(--text); font-weight: 700; }
+svg .lbl.mid { text-anchor: middle; }
+svg .lbl.small { font-size: 11px; font-weight: 600; }
+svg.hex { width: 100%; max-width: 320px; }
+svg.chest { width: 100%; max-width: 340px; }
+svg .ring { fill: none; stroke: #c9d6ea; stroke-width: 1.5; }
+svg .leadline { stroke: #a3b4cf; stroke-width: 1.2; }
+svg .axisArrow { stroke: var(--ng); stroke-width: 3; }
+svg .ahead { fill: var(--ng); }
+svg .pmark { fill: var(--accent-ink); font-size: 12px; font-weight: 700; text-anchor: middle; }
+svg .pmark.ghost { fill: #b8c7de; }
+svg .prv { fill: var(--text); font-size: 12px; text-anchor: middle; }
+svg .prx { fill: var(--ng); font-size: 15px; font-weight: 700; text-anchor: middle; }
+svg .note { fill: var(--ng); font-size: 12px; font-weight: 700; text-anchor: middle; }
+svg .noteBlue { fill: var(--accent-ink); font-size: 12px; font-weight: 700; text-anchor: middle; }
+svg .span { stroke: var(--ng); stroke-width: 1.5; }
+svg .ghostLine { stroke: #b8c7de; stroke-width: 1.2; stroke-dasharray: 3 3; }
+.axisVal { font-weight: 700; font-size: 16px; margin-bottom: 6px; color: var(--accent-ink); }
+.glyphs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
+.glyphCell { text-align: center; font-size: 13px; font-weight: 700; }
+svg.glyph { width: 70px; height: 80px; }
+/* 電気軸の4分割図 */
+svg.quad { width: 100%; max-width: 320px; }
+svg .sec { stroke: #fff; stroke-width: 2; }
+.quadKey { display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; font-size: 14px; align-items: center; }
+.quadKey .sw { width: 18px; height: 18px; border-radius: 6px; }
+.pol { font-weight: 700; color: var(--accent-ink); }
+/* 12誘導の配置図（梗塞部位） */
+.leadGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; max-width: 520px; }
+.leadGrid .lc { border: 1.5px solid var(--line); border-radius: 10px; text-align: center; font-size: 12px; font-weight: 700; padding: 2px 0 0; background: #fff; }
+.leadGrid .lc.up { background: var(--pink-soft); border-color: var(--pink); }
+.leadGrid .lc.down { background: var(--lilac-soft); border-color: var(--lilac); }
+.leadGrid svg { width: 100%; height: 64px; display: block; }
+.legend { display: flex; gap: 14px; font-size: 13px; margin: 6px 0; flex-wrap: wrap; }
+.legend span::before { content: ""; display: inline-block; width: 12px; height: 12px; border-radius: 4px; margin-right: 5px; vertical-align: -1px; }
+.legend .lu::before { background: var(--pink); }
+.legend .ld::before { background: var(--lilac); }
+/* 脚ブロックの比較表 */
+.bbb { display: grid; grid-template-columns: 90px repeat(3, 1fr); gap: 6px; align-items: center; font-size: 13px; }
+.bbb .h { font-weight: 700; text-align: center; color: var(--accent-ink); }
+.bbb .rowh { font-weight: 700; }
+.bbb .cell { background: #fff9f8; border: 1px solid #f6dcd6; border-radius: 10px; }
+.bbb svg { width: 100%; height: 110px; display: block; }
+/* 刺激伝導系の再生 */
+.partInfo {
+  margin-top: 10px;
+  min-height: 120px;
+  background: var(--accent-soft);
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: 16px;
+}
+.partInfo b { font-size: 19px; }
+.partInfo .stepNo { font-size: 12px; color: var(--muted); font-weight: 700; }
+svg.heart { max-width: 420px; }
+svg.heart .lbl { font-size: 14px; }
+@media (max-width: 760px) {
+  .bbb { grid-template-columns: 40px repeat(3, 1fr); }
+  #monitor { min-width: 520px; }
+  .monSide { width: 110px; }
+  .hr { font-size: 40px; }
+}
