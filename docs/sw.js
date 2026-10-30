@@ -1,7 +1,7 @@
 // オフラインで使うためのサービスワーカー。
 // 画面と JS は「キャッシュを先に返し、裏で更新」、心電図データ（.bin）は一度保存したら変わらないので「キャッシュ優先」。
 // 画面や JS を変えて公開したら VERSION を上げる。
-const VERSION = "v1";
+const VERSION = "v2";
 const SHELL = `shell-${VERSION}`;
 const DATA = "data-v1";
 const SHELL_FILES = [
