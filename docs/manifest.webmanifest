@@ -1,0 +1,16 @@
+{
+  "name": "心電図トレーニング",
+  "short_name": "心電図",
+  "description": "心電図検定の練習用アプリ（基礎レッスンと演習）",
+  "lang": "ja",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f8fd",
+  "theme_color": "#8fb5e5",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

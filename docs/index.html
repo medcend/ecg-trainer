@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>心電図トレーニング</title>
+  <meta name="theme-color" content="#8fb5e5">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="心電図">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="bar">
+    <h1 data-t="title"></h1>
+    <div class="pages">
+      <button id="pageBasics" data-t="pageBasics"></button>
+      <button id="pagePractice" data-t="pagePractice"></button>
+    </div>
+    <label class="pc"><span data-t="level"></span>
+      <select id="level">
+        <option value="4" data-t="lv4"></option>
+        <option value="3" data-t="lv3"></option>
+        <option value="2" disabled data-t="lv2"></option>
+        <option value="1" disabled data-t="lv1"></option>
+      </select>
+    </label>
+    <label class="pc"><span data-t="mode"></span>
+      <select id="mode">
+        <option value="mix" data-t="modeMix"></option>
+        <option value="12lead" data-t="mode12"></option>
+        <option value="monitor" data-t="modeMon"></option>
+      </select>
+    </label>
+    <label class="check pc"><input type="checkbox" id="weak"> <span data-t="weak"></span></label>
+    <span class="spacer"></span>
+    <button id="statsBtn" class="pc" data-t="stats"></button>
+    <button id="langBtn">English</button>
+  </header>
+
+  <main>
+    <section class="basics" id="basicsPage" hidden>
+      <nav class="lessonList" id="lessonList"></nav>
+      <article class="lesson" id="lesson"></article>
+    </section>
+    <section class="question" id="practicePage">
+      <div class="meta" id="meta"></div>
+      <div class="tabs" id="tabs"></div>
+      <div class="viewer" id="viewer">
+        <div class="paperWrap" id="paperWrap">
+          <canvas id="paper"></canvas>
+          <canvas id="overlay"></canvas>
+          <div class="readout" id="readout" hidden></div>
+        </div>
+        <div class="monitorWrap" id="monitorWrap" hidden>
+          <canvas id="monitor"></canvas>
+          <div class="monSide">
+            <div class="monLabel">HR</div>
+            <div class="hr" id="hr">--</div>
+            <div class="monLabel" id="monLead">II</div>
+            <div class="monLabel">25 mm/s</div>
+            <button id="soundBtn"></button>
+            <div class="gain">
+              <button id="gainDown">−</button><span id="gainVal">×1</span><button id="gainUp">＋</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tools" id="paperTools">
+        <span data-t="caliperHint"></span>
+        <span class="spacer"></span>
+        <span data-t="zoom"></span>
+        <button id="zoomOut">−</button><button id="zoomIn">＋</button>
+      </div>
+      <p class="prompt" id="prompt"></p>
+      <ol class="options" id="options"></ol>
+      <div class="explain" id="explain" hidden></div>
+      <div class="nav"><button id="nextBtn" class="primary" hidden></button></div>
+    </section>
+  </main>
+
+  <dialog id="statsDlg">
+    <h2 data-t="stats"></h2>
+    <div id="statsBody"></div>
+    <h3 data-t="syncTitle"></h3>
+    <div id="syncBody" class="syncBody"></div>
+    <div class="nav">
+      <button id="resetBtn" data-t="reset"></button>
+      <button id="closeStats" class="primary" data-t="close"></button>
+    </div>
+  </dialog>
+
+  <footer><span id="credits"></span> <span id="offline"></span></footer>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
